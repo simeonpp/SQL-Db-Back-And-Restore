@@ -2,6 +2,6 @@
 {
     public interface ITaskManager
     {
-        void ProccesTask(ITask task);
+        void ProcessTask(ITask task);
     }
 }

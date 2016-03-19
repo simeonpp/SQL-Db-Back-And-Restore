@@ -1,6 +1,6 @@
 ﻿namespace SqlDbBackAndRestore.Core
 {
-    using System;
+    using System.Threading;
     using Contracts;
     using SQL_Db_Back_and_Restore.Logger.Contracts;
     using SQL_Db_Back_and_Restore.Logger;
@@ -12,12 +12,7 @@
         private bool debugMode;
         private ILogger logger;
         private int threadCounter = 0;
-
-        public void ProccesTask(ITask task)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         /*
             Poor man's dependancy.
             Alternative solution would be use dependency injection, but because this
@@ -56,6 +51,28 @@
             }
 
             return instance;
+        }
+
+        public void ProcessTask(ITask task)
+        {
+            Thread thread = this.GetThread(task);
+            this.Log(string.Format("Executing task on Thred: {0}", thread.Name));
+            thread.Start();
+        }
+
+        private Thread GetThread(ITask task)
+        {
+            Thread thread = new Thread(new ThreadStart(task.Execute));
+            thread.Name = string.Format("Task manager thread #{0}", ++this.threadCounter);
+            return thread;
+        }
+
+        private void Log(string message)
+        {
+            if (this.debugMode)
+            {
+                this.logger.Log(message);
+            }
         }
     }
 }
