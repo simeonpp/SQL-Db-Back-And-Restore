@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDbBackAndRestore.Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDbBackAndRestore.WindowsFormsClient", "Clients\SqlDbBackAndRestore.WindowsFormsClient\SqlDbBackAndRestore.WindowsFormsClient.csproj", "{32B9DB84-8727-478B-BA58-14F4EAC840AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL-Db-Back-and-Restore.Logger", "SQL-Db-Back-and-Restore.Logger\SQL-Db-Back-and-Restore.Logger.csproj", "{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDbBackAndRestore.Logger", "SQL-Db-Back-and-Restore.Logger\SQLDbBackAndRestore.Logger.csproj", "{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

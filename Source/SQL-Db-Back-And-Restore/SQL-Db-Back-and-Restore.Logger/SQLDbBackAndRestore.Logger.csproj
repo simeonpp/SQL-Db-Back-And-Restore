@@ -7,8 +7,8 @@
     <ProjectGuid>{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SQL_Db_Back_and_Restore.Logger</RootNamespace>
-    <AssemblyName>SQL-Db-Back-and-Restore.Logger</AssemblyName>
+    <RootNamespace>SQLDbBackAndRestore.Logger</RootNamespace>
+    <AssemblyName>SQLDbBackAndRestore.Logger</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

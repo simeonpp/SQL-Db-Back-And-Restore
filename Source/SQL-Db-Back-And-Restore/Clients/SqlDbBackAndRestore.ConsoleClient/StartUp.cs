@@ -2,12 +2,8 @@
 {
     using Core;
     using Core.Contracts;
-    using SQL_Db_Back_and_Restore.Logger;
+    using SQLDbBackAndRestore.Logger;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     class StartUp
     {

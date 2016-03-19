@@ -1,4 +1,4 @@
-﻿namespace SQL_Db_Back_and_Restore.Logger
+﻿namespace SQLDbBackAndRestore.Logger
 {
     using Contracts;
     using System;

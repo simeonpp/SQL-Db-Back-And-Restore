@@ -1,4 +1,4 @@
-﻿namespace SQL_Db_Back_and_Restore.Logger.Contracts
+﻿namespace SQLDbBackAndRestore.Logger.Contracts
 {
     public interface ILogger
     {

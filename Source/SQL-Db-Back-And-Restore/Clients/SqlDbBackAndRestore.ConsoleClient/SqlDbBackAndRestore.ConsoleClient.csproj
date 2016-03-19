@@ -54,9 +54,9 @@
       <Project>{dd33cc06-1f49-48d3-b2b0-bc16ae26de19}</Project>
       <Name>SqlDbBackAndRestore.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SQL-Db-Back-and-Restore.Logger\SQL-Db-Back-and-Restore.Logger.csproj">
+    <ProjectReference Include="..\..\SQL-Db-Back-and-Restore.Logger\SQLDbBackAndRestore.Logger.csproj">
       <Project>{efcc5e27-13f4-4041-a56e-db3a6a9bb546}</Project>
-      <Name>SQL-Db-Back-and-Restore.Logger</Name>
+      <Name>SQLDbBackAndRestore.Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

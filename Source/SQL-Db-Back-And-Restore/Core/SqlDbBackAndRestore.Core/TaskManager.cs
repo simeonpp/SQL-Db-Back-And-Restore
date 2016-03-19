@@ -2,8 +2,8 @@
 {
     using System.Threading;
     using Contracts;
-    using SQL_Db_Back_and_Restore.Logger.Contracts;
-    using SQL_Db_Back_and_Restore.Logger;
+    using SQLDbBackAndRestore.Logger;
+    using SQLDbBackAndRestore.Logger.Contracts;
 
     public class TaskManager : ITaskManager
     {
