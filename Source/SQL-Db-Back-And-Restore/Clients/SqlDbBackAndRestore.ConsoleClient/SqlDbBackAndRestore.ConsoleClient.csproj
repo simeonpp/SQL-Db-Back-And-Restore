@@ -43,11 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SqlDbBackAndRestore.Core\SqlDbBackAndRestore.Core.csproj">
+      <Project>{dd33cc06-1f49-48d3-b2b0-bc16ae26de19}</Project>
+      <Name>SqlDbBackAndRestore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SQL-Db-Back-and-Restore.Logger\SQL-Db-Back-and-Restore.Logger.csproj">
+      <Project>{efcc5e27-13f4-4041-a56e-db3a6a9bb546}</Project>
+      <Name>SQL-Db-Back-and-Restore.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

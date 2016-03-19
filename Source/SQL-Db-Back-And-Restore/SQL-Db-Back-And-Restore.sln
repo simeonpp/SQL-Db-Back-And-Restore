@@ -3,8 +3,47 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1EDC38F6-7096-41D0-976B-1D1468952079}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{B05A5CBB-FE32-458E-9F6F-BF1AE65A87F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDbBackAndRestore.Core", "Core\SqlDbBackAndRestore.Core\SqlDbBackAndRestore.Core.csproj", "{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDbBackAndRestore.ConsoleClient", "Clients\SqlDbBackAndRestore.ConsoleClient\SqlDbBackAndRestore.ConsoleClient.csproj", "{CA00C307-FACA-4D9A-AA79-5B48A590A76C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDbBackAndRestore.WindowsFormsClient", "Clients\SqlDbBackAndRestore.WindowsFormsClient\SqlDbBackAndRestore.WindowsFormsClient.csproj", "{32B9DB84-8727-478B-BA58-14F4EAC840AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL-Db-Back-and-Restore.Logger", "SQL-Db-Back-and-Restore.Logger\SQL-Db-Back-and-Restore.Logger.csproj", "{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA00C307-FACA-4D9A-AA79-5B48A590A76C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA00C307-FACA-4D9A-AA79-5B48A590A76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA00C307-FACA-4D9A-AA79-5B48A590A76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA00C307-FACA-4D9A-AA79-5B48A590A76C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B9DB84-8727-478B-BA58-14F4EAC840AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B9DB84-8727-478B-BA58-14F4EAC840AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B9DB84-8727-478B-BA58-14F4EAC840AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B9DB84-8727-478B-BA58-14F4EAC840AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCC5E27-13F4-4041-A56E-DB3A6A9BB546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD33CC06-1F49-48D3-B2B0-BC16AE26DE19} = {1EDC38F6-7096-41D0-976B-1D1468952079}
+		{CA00C307-FACA-4D9A-AA79-5B48A590A76C} = {B05A5CBB-FE32-458E-9F6F-BF1AE65A87F7}
+		{32B9DB84-8727-478B-BA58-14F4EAC840AB} = {B05A5CBB-FE32-458E-9F6F-BF1AE65A87F7}
 	EndGlobalSection
 EndGlobal

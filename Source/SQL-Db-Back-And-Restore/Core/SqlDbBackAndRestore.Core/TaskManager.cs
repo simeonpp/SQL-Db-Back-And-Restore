@@ -56,6 +56,7 @@
         public void ProcessTask(ITask task)
         {
             Thread thread = this.GetThread(task);
+            Thread.Sleep(3000);
             this.Log(string.Format("Executing task on Thred: {0}", thread.Name));
             thread.Start();
         }
