@@ -25,6 +25,7 @@
             this.ExecuteSqlCommand();
             this.connection.Close();
             this.connection.Dispose();
+            this.NotifyFinish();
         }
 
         protected abstract void ExecuteSqlCommand();

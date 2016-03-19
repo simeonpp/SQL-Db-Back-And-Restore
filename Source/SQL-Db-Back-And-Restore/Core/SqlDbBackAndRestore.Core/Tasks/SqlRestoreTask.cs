@@ -10,6 +10,8 @@
         {
         }
 
+        public new event TaskFinished Finished;
+
         protected override void ExecuteSqlCommand()
         {
             this.sql = "USE master;";
@@ -41,6 +43,14 @@
             }
 
             Console.WriteLine("Restore done");
+        }
+
+        protected override void NotifyFinish()
+        {
+            if (this.Finished != null)
+            {
+                this.Finished(this, string.Format("Database {0} was successfully restored", this.databaseName));
+            }
         }
     }
 }

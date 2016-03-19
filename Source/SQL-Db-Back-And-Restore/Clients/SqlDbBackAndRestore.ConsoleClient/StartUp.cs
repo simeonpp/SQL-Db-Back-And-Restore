@@ -60,6 +60,7 @@
 
             string envirementDirectory = Environment.CurrentDirectory;
             ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(databaseName, envirementDirectory);
+            backUpDbTask.Finished += ObservableTaskFinished;
             taskManager.ProcessTask(backUpDbTask);
 
             PrintImportantMessage("Your task is processing. You will be notified when you task is finished. While you are waiting you can run another process.");
@@ -99,6 +100,11 @@
                 message,
                 Environment.NewLine,
                 spacer));
+        }
+
+        private static void ObservableTaskFinished(object sender, string message)
+        {
+            PrintImportantMessage(message, true);
         }
     }
 }

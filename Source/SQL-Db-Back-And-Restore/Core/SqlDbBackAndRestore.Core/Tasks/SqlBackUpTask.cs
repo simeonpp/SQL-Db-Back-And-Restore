@@ -2,13 +2,15 @@
 {
     using System;
     using System.Data.SqlClient;
-
+    
     public class SqlBackUpTask : BaseSqlTask
     {
         public SqlBackUpTask(string databaseName, string pathToSave)
             : base (databaseName, pathToSave)
         {
         }
+
+        public new event TaskFinished Finished;
 
         protected override void ExecuteSqlCommand()
         {
@@ -26,8 +28,14 @@
             {
                throw new Exception(ex.Message);
             }
+        }
 
-            Console.WriteLine("Backup Done.");
+        protected override void NotifyFinish()
+        {
+            if (this.Finished != null)
+            {
+                this.Finished(this, string.Format("Backup for database {0} was successfully created.", this.databaseName));
+            }
         }
     }
 }
