@@ -5,14 +5,17 @@
 
     public class SqlBackUpTask : BaseSqlTask
     {
-        public SqlBackUpTask(string tableName)
-            : base (tableName)
+        public SqlBackUpTask(string tableName, string pathToSave)
+            : base (tableName, pathToSave)
         {
         }
 
         protected override void ExecuteSqlCommand()
         {
-            this.sql = string.Format("BACKUP DATABASE {0} TO DISK = '{1}'", this.tableName, "D:\\kolio.bak");
+            string nowTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            string filePath = string.Format("{0}\\{1}-{2}.bak", this.pathToSave, this.tableName, nowTimestamp);
+
+            this.sql = string.Format("BACKUP DATABASE {0} TO DISK = '{1}'", this.tableName, filePath);
             this.command = new SqlCommand(this.sql, this.connection);
 
             try

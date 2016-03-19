@@ -5,8 +5,8 @@
 
     public class SqlRestoreTask : BaseSqlTask
     {
-        public SqlRestoreTask(string tableName)
-            : base (tableName)
+        public SqlRestoreTask(string tableName, string pathToSave)
+            : base (tableName, pathToSave)
         {
         }
 

@@ -62,7 +62,8 @@
             Console.WriteLine("Please enter table name:");
             string tableName = Console.ReadLine();
 
-            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(tableName);
+            string envirementDirectory = Environment.CurrentDirectory;
+            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(tableName, envirementDirectory);
             taskManager.ProcessTask(backUpDbTask);
 
             PrintImportantMessage("Your task is processing. You will be notified when you task is finished. While you are waiting you can run another process.");
