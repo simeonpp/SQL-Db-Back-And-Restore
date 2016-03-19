@@ -47,7 +47,7 @@
                         HandleRestoreOption();
                         break;
                     case 0:
-                        PrintImportantMessage("Thank you for using Job Service Application. We are looking forward to hear from you again.", true);
+                        PrintImportantMessage("Thank you for using Job Service Application.", true);
                         break;
                     default:
                         Console.WriteLine("Invalid input. Please choose one of the available options.");
