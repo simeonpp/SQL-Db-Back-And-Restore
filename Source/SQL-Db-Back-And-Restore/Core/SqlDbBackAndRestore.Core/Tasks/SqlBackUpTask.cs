@@ -12,10 +12,18 @@
 
         protected override void ExecuteSqlCommand()
         {
-            // TODO put it in try cath
-            this.sql = "BACKUP DATABASE JobServiceApplication TO DISK = 'D:\\kolio.bak'";
+            this.sql = string.Format("BACKUP DATABASE {0} TO DISK = '{1}'", this.tableName, "D:\\kolio.bak");
             this.command = new SqlCommand(this.sql, this.connection);
-            this.command.ExecuteNonQuery();
+
+            try
+            {
+                this.command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
 
             Console.WriteLine("Backup Done.");
         }

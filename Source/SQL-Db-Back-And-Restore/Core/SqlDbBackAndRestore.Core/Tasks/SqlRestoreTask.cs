@@ -1,6 +1,7 @@
 ﻿namespace SqlDbBackAndRestore.Core.Tasks
 {
     using System;
+    using System.Data.SqlClient;
 
     public class SqlRestoreTask : BaseSqlTask
     {
@@ -12,11 +13,20 @@
         protected override void ExecuteSqlCommand()
         {
             // TODO put it in try cath
-            sql = "USE master;";
-            sql += "ALTER DATABASE JobServiceApplication SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
-            sql += "RESTORE DATABASE JobServiceApplication FROM DISk = 'D:\\kolio.bak' WITH REPLACE";
-            command = new SqlCommand(sql, conn);
-            command.ExecuteNonQuery();
+            this.sql = "USE master;";
+            this.sql += string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", this.tableName);
+            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.tableName, "D:\\kolio.bak");
+            this.command = new SqlCommand(this.sql, this.connection);
+
+            try
+            {
+                this.command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
 
             Console.WriteLine("Restore done");
 
