@@ -5,8 +5,8 @@
 
     public class SqlRestoreTask : BaseSqlTask
     {
-        public SqlRestoreTask(string tableName, string pathToSave)
-            : base (tableName, pathToSave)
+        public SqlRestoreTask(string tableName, string restoreFilePath)
+            : base (tableName, restoreFilePath)
         {
         }
 
@@ -15,7 +15,7 @@
             // TODO put it in try cath
             this.sql = "USE master;";
             this.sql += string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", this.tableName);
-            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.tableName, "D:\\kolio.bak");
+            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.tableName, this.path);
             this.command = new SqlCommand(this.sql, this.connection);
 
             try

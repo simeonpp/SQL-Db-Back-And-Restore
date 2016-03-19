@@ -11,9 +11,9 @@ namespace SqlDbBackAndRestore.Core
             return new SqlBackUpTask(tableName, pathToSave);
         }
 
-        public ITask GetSqlRestoreDbTast(string tableName, string pathToSave)
+        public ITask GetSqlRestoreDbTast(string tableName, string restoreFilePath)
         {
-            return new SqlRestoreTask(tableName, pathToSave);
+            return new SqlRestoreTask(tableName, restoreFilePath);
         }
     }
 }

@@ -71,7 +71,22 @@
 
         private static void HandleRestoreOption()
         {
-            Console.WriteLine("HandleResoreOption");
+            Console.WriteLine("Please enter table name:");
+            string tableName = Console.ReadLine();
+
+            Console.WriteLine("Please the full (absolute) path to your .bak file");
+            string bakFilePath = Console.ReadLine();
+
+            string lastFourChars = bakFilePath.Substring(bakFilePath.Length - 4);
+            if (lastFourChars != ".bak")
+            {
+                Console.WriteLine("Invalid file path. The file extension should be 'bak'");
+            }
+            else
+            {
+                ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(tableName, bakFilePath);
+                taskManager.ProcessTask(restoreDbTask);
+            }
         }
 
         private static void PrintImportantMessage(string message, bool uppercase = false)

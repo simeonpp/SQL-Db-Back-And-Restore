@@ -13,7 +13,7 @@
         protected override void ExecuteSqlCommand()
         {
             string nowTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            string filePath = string.Format("{0}\\{1}-{2}.bak", this.pathToSave, this.tableName, nowTimestamp);
+            string filePath = string.Format("{0}\\{1}-{2}.bak", this.path, this.tableName, nowTimestamp);
 
             this.sql = string.Format("BACKUP DATABASE {0} TO DISK = '{1}'", this.tableName, filePath);
             this.command = new SqlCommand(this.sql, this.connection);

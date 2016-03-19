@@ -9,14 +9,14 @@
         protected SqlCommand command;
         protected string sql = "";
         protected string tableName = "";
-        protected string pathToSave = "";
+        protected string path = "";
 
-        public BaseSqlTask(string tableName, string pathToSave)
+        public BaseSqlTask(string tableName, string path)
         {
             this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", tableName);
             this.connection = new SqlConnection(connectionString);
             this.tableName = tableName;
-            this.pathToSave = pathToSave;
+            this.path = path;
         }
 
         public override void Execute()
