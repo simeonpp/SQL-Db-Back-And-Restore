@@ -5,17 +5,16 @@
 
     public class SqlRestoreTask : BaseSqlTask
     {
-        public SqlRestoreTask(string tableName, string restoreFilePath)
-            : base (tableName, restoreFilePath)
+        public SqlRestoreTask(string databaseName, string restoreFilePath)
+            : base (databaseName, restoreFilePath)
         {
         }
 
         protected override void ExecuteSqlCommand()
         {
-            // TODO put it in try cath
             this.sql = "USE master;";
-            this.sql += string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", this.tableName);
-            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.tableName, this.path);
+            this.sql += string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", this.databaseName);
+            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.databaseName, this.path);
             this.command = new SqlCommand(this.sql, this.connection);
 
             try
@@ -28,10 +27,20 @@
                 throw new Exception(ex.Message);
             }
 
-            Console.WriteLine("Restore done");
+            // When restoring is finished the database is ready for use again
+            this.sql = string.Format("ALTER DATABASE {0} SET MULTI_USER", this.databaseName);
+            this.command = new SqlCommand(this.sql, this.connection);
+            try
+            {
+                this.command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
 
-            // Once you've finished restoring and the database is ready for use again:
-            // ALTER DATABASE AMOD SET MULTI_USER;
+                throw new Exception(ex.Message);
+            }
+
+            Console.WriteLine("Restore done");
         }
     }
 }

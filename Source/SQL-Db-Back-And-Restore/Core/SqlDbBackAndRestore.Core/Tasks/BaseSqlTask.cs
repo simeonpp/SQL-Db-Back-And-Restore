@@ -8,14 +8,14 @@
         protected SqlConnection connection;
         protected SqlCommand command;
         protected string sql = "";
-        protected string tableName = "";
+        protected string databaseName = "";
         protected string path = "";
 
-        public BaseSqlTask(string tableName, string path)
+        public BaseSqlTask(string databaseName, string path)
         {
-            this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", tableName);
+            this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", databaseName);
             this.connection = new SqlConnection(connectionString);
-            this.tableName = tableName;
+            this.databaseName = databaseName;
             this.path = path;
         }
 

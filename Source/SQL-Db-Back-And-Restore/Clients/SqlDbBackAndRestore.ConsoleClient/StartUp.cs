@@ -55,11 +55,11 @@
 
         private static void HandleBackUpOption()
         {
-            Console.WriteLine("Please enter table name:");
-            string tableName = Console.ReadLine();
+            Console.WriteLine("Please enter database name:");
+            string databaseName = Console.ReadLine();
 
             string envirementDirectory = Environment.CurrentDirectory;
-            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(tableName, envirementDirectory);
+            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(databaseName, envirementDirectory);
             taskManager.ProcessTask(backUpDbTask);
 
             PrintImportantMessage("Your task is processing. You will be notified when you task is finished. While you are waiting you can run another process.");
@@ -67,8 +67,8 @@
 
         private static void HandleRestoreOption()
         {
-            Console.WriteLine("Please enter table name:");
-            string tableName = Console.ReadLine();
+            Console.WriteLine("Please enter database name:");
+            string databaseName = Console.ReadLine();
 
             Console.WriteLine("Please the full (absolute) path to your .bak file");
             string bakFilePath = Console.ReadLine();
@@ -80,7 +80,7 @@
             }
             else
             {
-                ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(tableName, bakFilePath);
+                ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(databaseName, bakFilePath);
                 taskManager.ProcessTask(restoreDbTask);
             }
         }

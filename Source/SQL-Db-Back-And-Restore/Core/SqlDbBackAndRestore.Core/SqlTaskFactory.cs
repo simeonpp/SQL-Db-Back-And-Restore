@@ -6,14 +6,14 @@ namespace SqlDbBackAndRestore.Core
 {
     public class SqlTaskFactory : ISqlTaskFactory
     {
-        public ITask GetSqlBackupDbTask(string tableName, string pathToSave)
+        public ITask GetSqlBackupDbTask(string databaseName, string pathToSave)
         {
-            return new SqlBackUpTask(tableName, pathToSave);
+            return new SqlBackUpTask(databaseName, pathToSave);
         }
 
-        public ITask GetSqlRestoreDbTast(string tableName, string restoreFilePath)
+        public ITask GetSqlRestoreDbTast(string databaseName, string restoreFilePath)
         {
-            return new SqlRestoreTask(tableName, restoreFilePath);
+            return new SqlRestoreTask(databaseName, restoreFilePath);
         }
     }
 }
