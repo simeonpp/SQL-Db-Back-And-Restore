@@ -51,7 +51,6 @@
     <Compile Include="Tasks\SqlBackUpTask.cs" />
     <Compile Include="Tasks\SqlRestoreTask.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\SQL-Db-Back-and-Restore.Logger\SQLDbBackAndRestore.Logger.csproj">
       <Project>{efcc5e27-13f4-4041-a56e-db3a6a9bb546}</Project>

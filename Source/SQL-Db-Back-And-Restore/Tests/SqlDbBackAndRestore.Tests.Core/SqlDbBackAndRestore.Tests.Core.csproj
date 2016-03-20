@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="SqlTaskFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -58,6 +59,10 @@
     <ProjectReference Include="..\..\Core\SqlDbBackAndRestore.Core\SqlDbBackAndRestore.Core.csproj">
       <Project>{dd33cc06-1f49-48d3-b2b0-bc16ae26de19}</Project>
       <Name>SqlDbBackAndRestore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SQL-Db-Back-and-Restore.Logger\SQLDbBackAndRestore.Logger.csproj">
+      <Project>{efcc5e27-13f4-4041-a56e-db3a6a9bb546}</Project>
+      <Name>SQLDbBackAndRestore.Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

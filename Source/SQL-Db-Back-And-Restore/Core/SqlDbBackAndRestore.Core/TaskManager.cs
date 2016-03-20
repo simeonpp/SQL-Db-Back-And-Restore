@@ -60,7 +60,7 @@
             thread.Start();
         }
 
-        private Thread GetThread(ITask task)
+        internal Thread GetThread(ITask task)
         {
             Thread thread = new Thread(new ThreadStart(task.Execute));
             thread.Name = string.Format("Task manager thread #{0}", ++this.threadCounter);
