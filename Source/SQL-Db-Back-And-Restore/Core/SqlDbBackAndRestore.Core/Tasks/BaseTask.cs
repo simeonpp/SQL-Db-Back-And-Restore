@@ -10,7 +10,7 @@
 
         public abstract void Execute();
         
-        protected void EventNotifyFinish()
+        internal void EventNotifyFinish()
         {
             if (this.Finished != null)
             {
@@ -18,6 +18,6 @@
             }
         }
 
-        protected abstract string GetEventNotifyFinishMessage();
+        internal abstract string GetEventNotifyFinishMessage();
     }
 }

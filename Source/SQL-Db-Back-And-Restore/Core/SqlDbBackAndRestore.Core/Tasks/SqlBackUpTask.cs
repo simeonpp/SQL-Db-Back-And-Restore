@@ -28,7 +28,7 @@
             }
         }
 
-        protected override string GetEventNotifyFinishMessage()
+        internal override string GetEventNotifyFinishMessage()
         {
             return string.Format("Backup for database {0} was successfully created.", this.databaseName);
         }

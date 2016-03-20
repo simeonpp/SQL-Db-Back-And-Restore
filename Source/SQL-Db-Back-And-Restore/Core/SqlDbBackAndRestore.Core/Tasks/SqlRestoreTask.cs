@@ -41,7 +41,7 @@
             }
         }
 
-        protected override string GetEventNotifyFinishMessage()
+        internal override string GetEventNotifyFinishMessage()
         {
             return string.Format("Database {0} was successfully restored", this.databaseName);
         }
