@@ -35,7 +35,7 @@
         internal Thread GetThread(ITask task)
         {
             Thread thread = new Thread(new ThreadStart(task.Execute));
-            System.Console.WriteLine(this.threadCounter);
+            thread.Name = string.Format("Task manager thread #{0}", ++this.threadCounter);
             return thread;
         }
 
