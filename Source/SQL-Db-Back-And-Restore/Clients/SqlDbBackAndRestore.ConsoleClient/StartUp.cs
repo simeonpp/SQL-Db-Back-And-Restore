@@ -91,6 +91,7 @@
             else
             {
                 ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(connectionString, bakFilePath);
+                restoreDbTask.Finished += ObservableTaskFinished;
                 taskManager.ProcessTask(restoreDbTask);
             }
         }
