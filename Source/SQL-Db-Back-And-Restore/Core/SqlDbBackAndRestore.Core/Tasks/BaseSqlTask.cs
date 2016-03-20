@@ -1,22 +1,19 @@
 ﻿namespace SqlDbBackAndRestore.Core.Tasks
 {
+    using System.Data;
     using System.Data.SqlClient;
 
     public abstract class BaseSqlTask : BaseTask
     {
-        protected string connectionString = "";
-        protected SqlConnection connection;
-        protected SqlCommand command;
-        protected string sql = "";
+        protected IDbConnection connection;
+        protected IDbCommand command;
         protected string databaseName = "";
-        protected string path = "";
 
-        public BaseSqlTask(string connectionString, string databaseName, string path)
+        public BaseSqlTask(IDbConnection connection, IDbCommand command, string databaseName)
         {
-            this.connectionString = connectionString;
-            this.connection = new SqlConnection(connectionString);
+            this.connection = connection;
+            this.command = command;
             this.databaseName = databaseName;
-            this.path = path;
         }
 
         public override void Execute()

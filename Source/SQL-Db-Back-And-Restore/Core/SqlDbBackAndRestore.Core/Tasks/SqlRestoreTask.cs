@@ -1,22 +1,18 @@
 ﻿namespace SqlDbBackAndRestore.Core.Tasks
 {
     using System;
+    using System.Data;
     using System.Data.SqlClient;
 
     public class SqlRestoreTask : BaseSqlTask
     {
-        public SqlRestoreTask(string connectionString, string databaseName, string restoreFilePath)
-            : base (connectionString, databaseName, restoreFilePath)
+        public SqlRestoreTask(IDbConnection connection, IDbCommand command, string databaseName)
+            : base (connection, command, databaseName)
         {
         }
        
         protected override void ExecuteSqlCommand()
         {
-            this.sql = "USE master;";
-            this.sql += string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", this.databaseName);
-            this.sql += string.Format("RESTORE DATABASE {0} FROM DISk = '{1}' WITH REPLACE", this.databaseName, this.path);
-            this.command = new SqlCommand(this.sql, this.connection);
-
             try
             {
                 this.command.ExecuteNonQuery();
@@ -27,6 +23,7 @@
                 throw new Exception(ex.Message);
             }
 
+            /*
             // When restoring is finished the database is ready for use again
             this.sql = string.Format("ALTER DATABASE {0} SET MULTI_USER", this.databaseName);
             this.command = new SqlCommand(this.sql, this.connection);
@@ -39,6 +36,7 @@
 
                 throw new Exception(ex.Message);
             }
+            */
         }
 
         internal override string GetEventNotifyFinishMessage()
