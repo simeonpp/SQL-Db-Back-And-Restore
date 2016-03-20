@@ -1,6 +1,5 @@
 ﻿namespace SqlDbBackAndRestore.Core.Tasks
 {
-    using System;
     using Contracts;
 
     public delegate void TaskFinished(object sender, string message);

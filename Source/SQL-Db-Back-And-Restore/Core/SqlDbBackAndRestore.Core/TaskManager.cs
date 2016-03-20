@@ -67,7 +67,7 @@
             return thread;
         }
 
-        private void Log(string message)
+        internal void Log(string message)
         {
             if (this.debugMode)
             {
