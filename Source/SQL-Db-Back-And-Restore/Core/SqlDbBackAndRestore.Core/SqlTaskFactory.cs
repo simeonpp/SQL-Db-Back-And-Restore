@@ -1,19 +1,28 @@
 ﻿using System;
 using SqlDbBackAndRestore.Core.Contracts;
 using SqlDbBackAndRestore.Core.Tasks;
+using System.Text.RegularExpressions;
 
 namespace SqlDbBackAndRestore.Core
 {
     public class SqlTaskFactory : ISqlTaskFactory
     {
-        public ITask GetSqlBackupDbTask(string databaseName, string pathToSave)
+        public ITask GetSqlBackupDbTask(string connectionString, string pathToSave)
         {
-            return new SqlBackUpTask(databaseName, pathToSave);
+            string databaseName = this.GetDatabaseNameFromConnectionString(connectionString);
+            return new SqlBackUpTask(connectionString, databaseName, pathToSave);
         }
 
-        public ITask GetSqlRestoreDbTast(string databaseName, string restoreFilePath)
+        public ITask GetSqlRestoreDbTast(string connectionString, string restoreFilePath)
         {
-            return new SqlRestoreTask(databaseName, restoreFilePath);
+            string databaseName = this.GetDatabaseNameFromConnectionString(connectionString);
+            return new SqlRestoreTask(connectionString, databaseName, restoreFilePath);
+        }
+
+        private string GetDatabaseNameFromConnectionString(string connectionString)
+        {
+            string databaseName = Regex.Match(connectionString, @"Initial Catalog=([^;]*)\;").Groups[1].Value;
+            return databaseName;
         }
     }
 }

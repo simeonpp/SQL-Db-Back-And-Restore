@@ -11,9 +11,9 @@
         protected string databaseName = "";
         protected string path = "";
 
-        public BaseSqlTask(string databaseName, string path)
+        public BaseSqlTask(string connectionString, string databaseName, string path)
         {
-            this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", databaseName);
+            this.connectionString = connectionString;
             this.connection = new SqlConnection(connectionString);
             this.databaseName = databaseName;
             this.path = path;
@@ -25,7 +25,7 @@
             this.ExecuteSqlCommand();
             this.connection.Close();
             this.connection.Dispose();
-            this.NotifyFinish();
+            this.EventNotifyFinish();
         }
 
         protected abstract void ExecuteSqlCommand();

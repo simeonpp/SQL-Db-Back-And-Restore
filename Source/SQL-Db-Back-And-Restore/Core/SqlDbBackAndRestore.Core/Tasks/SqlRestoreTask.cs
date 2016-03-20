@@ -5,13 +5,11 @@
 
     public class SqlRestoreTask : BaseSqlTask
     {
-        public SqlRestoreTask(string databaseName, string restoreFilePath)
-            : base (databaseName, restoreFilePath)
+        public SqlRestoreTask(string connectionString, string databaseName, string restoreFilePath)
+            : base (connectionString, databaseName, restoreFilePath)
         {
         }
-
-        public new event TaskFinished Finished;
-
+       
         protected override void ExecuteSqlCommand()
         {
             this.sql = "USE master;";
@@ -41,16 +39,11 @@
 
                 throw new Exception(ex.Message);
             }
-
-            Console.WriteLine("Restore done");
         }
 
-        protected override void NotifyFinish()
+        protected override string GetEventNotifyFinishMessage()
         {
-            if (this.Finished != null)
-            {
-                this.Finished(this, string.Format("Database {0} was successfully restored", this.databaseName));
-            }
+            return string.Format("Database {0} was successfully restored", this.databaseName);
         }
     }
 }

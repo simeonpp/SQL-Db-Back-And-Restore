@@ -18,6 +18,12 @@
             AskForUserInput();
         }
 
+        /// <summary>
+        /// Here we are requesting a user to input only database name and build connection string for him 
+        /// based on integrated security. 
+        /// However, we can requires the full connection string the user but for testing purposes we will
+        /// this like this.
+        /// </summary>
         private static void AskForUserInput()
         {
             PrintImportantMessage("Welcome to Job Service Application", true);
@@ -59,7 +65,9 @@
             string databaseName = Console.ReadLine();
 
             string envirementDirectory = Environment.CurrentDirectory;
-            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(databaseName, envirementDirectory);
+            string connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", databaseName);
+
+            ITask backUpDbTask = sqlTaskFactory.GetSqlBackupDbTask(connectionString, envirementDirectory);
             backUpDbTask.Finished += ObservableTaskFinished;
             taskManager.ProcessTask(backUpDbTask);
 
@@ -73,6 +81,7 @@
 
             Console.WriteLine("Please the full (absolute) path to your .bak file");
             string bakFilePath = Console.ReadLine();
+            string connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=true", databaseName);
 
             string lastFourChars = bakFilePath.Substring(bakFilePath.Length - 4);
             if (lastFourChars != ".bak")
@@ -81,7 +90,7 @@
             }
             else
             {
-                ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(databaseName, bakFilePath);
+                ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTast(connectionString, bakFilePath);
                 taskManager.ProcessTask(restoreDbTask);
             }
         }
@@ -102,9 +111,25 @@
                 spacer));
         }
 
+        private static void PrintEventNotifyMessage(string message)
+        {
+            string spacer = new string('*', 25);
+            Console.WriteLine(string.Format("{0}{1}{2}{3}{4}",
+                spacer,
+                Environment.NewLine,
+                message,
+                Environment.NewLine,
+                spacer));
+        }
+
         private static void ObservableTaskFinished(object sender, string message)
         {
-            PrintImportantMessage(message, true);
+            PrintEventNotifyMessage(string.Format("{0}{1}{2}{3}{4}", 
+                "NOTIFICATION", 
+                Environment.NewLine, 
+                message, 
+                Environment.NewLine, 
+                "This does not affect your current actions."));
         }
     }
 }

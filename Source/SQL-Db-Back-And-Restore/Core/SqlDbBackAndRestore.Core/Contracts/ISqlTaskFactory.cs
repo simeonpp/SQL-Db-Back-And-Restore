@@ -2,8 +2,8 @@
 {
     public interface ISqlTaskFactory
     {
-        ITask GetSqlBackupDbTask(string databaseName, string pathToSave);
+        ITask GetSqlBackupDbTask(string connectionString, string pathToSave);
 
-        ITask GetSqlRestoreDbTast(string databaseName, string restoreFilePath);
+        ITask GetSqlRestoreDbTast(string connectionString, string restoreFilePath);
     }
 }
