@@ -10,7 +10,7 @@
             : base (connection, command, databaseName)
         {
         }
-       
+
         protected override void ExecuteSqlCommand()
         {
             try

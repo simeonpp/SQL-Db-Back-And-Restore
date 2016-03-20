@@ -13,7 +13,6 @@
     {
 
         private TaskManager taskManager;
-        private SqlBackUpTask sqlBackUpTask;
 
         private string databaseName = "JobServiceApplication";
         private string connectionString = "";
@@ -24,13 +23,15 @@
         {
             this.taskManager = TaskManager.GetInstance();
             this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;", this.databaseName);
-            this.sqlBackUpTask = new SqlBackUpTask(this.connectionString, this.databaseName, this.path);
         }
 
         [Test]
         public void GetThreadShouldReturnThreadWithCorrectTask()
-        {            
-            Thread thread = this.taskManager.GetThread(this.sqlBackUpTask);
+        {
+            SqlTaskFactory sqlTaskFactory = new SqlTaskFactory();
+            ITask sqlBackUpTask = sqlTaskFactory.GetSqlBackupDbTask(this.connectionString, this.path);
+
+            Thread thread = this.taskManager.GetThread(sqlBackUpTask);
             Assert.AreEqual(thread.Name, "Task manager thread #1");
         }
 

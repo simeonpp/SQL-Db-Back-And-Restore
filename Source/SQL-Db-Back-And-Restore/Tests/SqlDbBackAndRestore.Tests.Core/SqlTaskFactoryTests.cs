@@ -22,9 +22,6 @@
         [Test]
         public void GetDbNameFromConnectionStringShouldReuturnRightResult()
         {
-            
-            
-            
             string actual = this.sqlTaskFactory.GetDatabaseNameFromConnectionString(connectionString);
             Assert.AreEqual(databaseName, actual);
         }
