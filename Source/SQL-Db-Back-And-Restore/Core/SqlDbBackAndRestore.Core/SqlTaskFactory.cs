@@ -13,13 +13,13 @@ namespace SqlDbBackAndRestore.Core
             return new SqlBackUpTask(connectionString, databaseName, pathToSave);
         }
 
-        public ITask GetSqlRestoreDbTast(string connectionString, string restoreFilePath)
+        public ITask GetSqlRestoreDbTask(string connectionString, string restoreFilePath)
         {
             string databaseName = this.GetDatabaseNameFromConnectionString(connectionString);
             return new SqlRestoreTask(connectionString, databaseName, restoreFilePath);
         }
 
-        private string GetDatabaseNameFromConnectionString(string connectionString)
+        public string GetDatabaseNameFromConnectionString(string connectionString)
         {
             string databaseName = Regex.Match(connectionString, @"Initial Catalog=([^;]*)\;").Groups[1].Value;
             return databaseName;

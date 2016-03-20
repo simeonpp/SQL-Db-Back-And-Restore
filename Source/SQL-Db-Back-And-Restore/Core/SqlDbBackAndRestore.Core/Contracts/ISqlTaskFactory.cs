@@ -4,6 +4,6 @@
     {
         ITask GetSqlBackupDbTask(string connectionString, string pathToSave);
 
-        ITask GetSqlRestoreDbTast(string connectionString, string restoreFilePath);
+        ITask GetSqlRestoreDbTask(string connectionString, string restoreFilePath);
     }
 }
