@@ -4,18 +4,28 @@
     using Core.Contracts;
     using SQLDbBackAndRestore.Logger;
     using System;
+    using Ninject;
 
     class StartUp
     {
+        private static IKernel kernal;
         private static ITaskManager taskManager;
         private static ISqlTaskFactory sqlTaskFactory;
 
         static void Main()
         {
-            taskManager = TaskManager.GetInstance(true, new ConsoleLogger());
+            RegisterMappings();
+
+            taskManager = kernal.Get<TaskManager>();
             sqlTaskFactory = new SqlTaskFactory();
 
             AskForUserInput();
+        }
+
+        private static void RegisterMappings()
+        {
+            kernal = new StandardKernel();
+            kernal.Bind<ITaskManager>().To<TaskManager>().InSingletonScope();
         }
 
         /// <summary>

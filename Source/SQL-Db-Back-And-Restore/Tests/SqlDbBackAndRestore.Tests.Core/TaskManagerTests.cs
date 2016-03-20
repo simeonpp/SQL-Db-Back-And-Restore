@@ -21,7 +21,7 @@
         [SetUp]
         public void Init()
         {
-            this.taskManager = TaskManager.GetInstance();
+            this.taskManager = new TaskManager();
             this.connectionString = string.Format("Data Source=.;Initial Catalog={0};Integrated Security=True;", this.databaseName);
         }
 

@@ -16,7 +16,7 @@
         public void LogShouldLogMessageWhenInDebugMode()
         {
             var mockedLogger = new Mock<ILogger>();
-            var taskManager = TaskManager.GetInstance(true, mockedLogger.Object);
+            var taskManager = new TaskManager(true, mockedLogger.Object);
 
             taskManager.Log(this.messageToLog);
             mockedLogger.Verify(x => x.Log(It.Is<string>(s => s == this.messageToLog)));
