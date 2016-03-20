@@ -103,6 +103,8 @@
                 ITask restoreDbTask = sqlTaskFactory.GetSqlRestoreDbTask(connectionString, bakFilePath);
                 restoreDbTask.Finished += ObservableTaskFinished;
                 taskManager.ProcessTask(restoreDbTask);
+
+                PrintImportantMessage("Your task is processing. You will be notified when you task is finished. While you are waiting you can run another process.");
             }
         }
 
