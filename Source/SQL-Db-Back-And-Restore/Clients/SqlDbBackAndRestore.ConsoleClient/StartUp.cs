@@ -98,23 +98,24 @@
 
         private static void PrintImportantMessage(string message, bool uppercase = false)
         {
-            if (uppercase)
-            {
-                message = message.ToUpper();
-            }
-
             string spacer = new string('=', 50);
-            Console.WriteLine(string.Format("{0}{1}{2}{3}{4}",
-                spacer,
-                Environment.NewLine,
-                message,
-                Environment.NewLine,
-                spacer));
+            PrintMessage(message, spacer, uppercase);
         }
 
         private static void PrintEventNotifyMessage(string message)
         {
             string spacer = new string('*', 25);
+            PrintMessage(message, spacer);
+        }
+
+        private static void PrintMessage(string message, string spacer, bool uppercase = false)
+        {
+            if (uppercase)
+            {
+                message = message.ToUpper();
+            }
+
+
             Console.WriteLine(string.Format("{0}{1}{2}{3}{4}",
                 spacer,
                 Environment.NewLine,
