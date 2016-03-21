@@ -5,7 +5,7 @@
     using SQLDbBackAndRestore.Logger;
     using System;
     using Ninject;
-
+    using SQLDbBackAndRestore.Logger.Contracts;
     class StartUp
     {
         private static IKernel kernal;
@@ -25,6 +25,7 @@
         private static void RegisterMappings()
         {
             kernal = new StandardKernel();
+            kernal.Bind<ILogger>().To<ConsoleLogger>();
             kernal.Bind<ITaskManager>().To<TaskManager>().InSingletonScope();
         }
 

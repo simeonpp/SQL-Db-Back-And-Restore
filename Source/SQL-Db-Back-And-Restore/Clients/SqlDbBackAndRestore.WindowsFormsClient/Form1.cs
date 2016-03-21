@@ -3,6 +3,8 @@
     using Core;
     using Core.Contracts;
     using Ninject;
+    using SQLDbBackAndRestore.Logger;
+    using SQLDbBackAndRestore.Logger.Contracts;
     using System;
     using System.Windows.Forms;
 
@@ -30,6 +32,7 @@
         private void RegisterMappings()
         {
             kernal = new StandardKernel();
+            kernal.Bind<ILogger>().To<ConsoleLogger>();
             kernal.Bind<ITaskManager>().To<TaskManager>().InSingletonScope();
         }
 

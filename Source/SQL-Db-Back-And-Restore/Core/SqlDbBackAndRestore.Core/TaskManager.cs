@@ -10,16 +10,8 @@
         private bool debugMode;
         private ILogger logger;
         private int threadCounter = 0;
-        
-        /*
-            Poor man's dependancy.
-        */
-        public TaskManager()
-            : this(false, new ConsoleLogger())
-        {
-        }
 
-        public TaskManager(bool debugMode, ILogger logger)
+        public TaskManager(ILogger logger, bool debugMode = false)
         {
             this.debugMode = debugMode;
             this.logger = logger;
